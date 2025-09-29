@@ -1,0 +1,69 @@
+
+HTTP -> protocolo de transferência de hypertexto
+*Baseado em texto
+
+*Sem estado (Se for feito uma requisição, não será feito um salvamento das
+requisições, a menos que seja feito o salvamento no servidor, mas não é
+nativo do HTTP)
+
+*Cliente servidor (Clientes irão se comunicar com o servidor através do http)
+
+*Modelo Request-Response (Requisições do cliente e respostas do servidor)
+
+*HTTPS (Http de uma forma mais segura, com dados enviados de forma encriptada)
+
+----------------------------------------------------------------------------------------
+
+REST-> Interface para uma comunicação padronizada (Princípios)
+RESTFUL -> Sistema que utiliza de forma fiel todos esses princíios de comunicação
+
+
+----------------------------------------------------------------------------------------
+
+POST - Criar Recursos, Enviar Dados, Iniciar Procedimentos, etc
+GET - Obter Recursos
+PUT - Atualizar Recursos
+DELETE - Excluir Recursos
+PATCH - Atualização Parcial
+HEAD - Verificação
+OPTIONS - Descrição de opções de comunicação
+
+----------------------------------------------------------------------------------------
+
+Familia de Códigos de Status
+100 - Informativos
+200 - Sucesso
+300 - Redirecionamentos
+400 - Erro de Client
+500 - Erro de Server
+
+----------------------------------------------------------------------------------------
+
+200 - OK
+201 - Created
+202 - Accepted (Requisição foi um sucesso e foi aceita)
+204 - No Content (Cenário, exclusão de um usuário, foi um sucesso e não contem mais o sucesso)
+400 - Bad Request (Erro por parte do cliente onde faltou alguma parametro ou existe algum parametro errado na requisição)
+401 - Unauthorized (Erro na autenticação)
+403 - Forbidden (Existe a autenticação, mas não existe a permissão para acessar tal recurso)
+404 - Not found (Tentando acessar um recurso que não existe)
+405 - Method Not Allowed (O servidor espera um metodo/verbo http diferente do solicitado)
+409 - Conflict (Cenário: onde se tenta cadastrar um cliente já cadastrado, gerando um conflito)
+422 - Unprocessable Entity (Cenário: erro nas validações, enviando cpf inválidos)
+500 - Erro de Server (Falha no servidor)
+
+----------------------------------------------------------------------------------------
+Contrato de API
+
+Um contrato de API é uma especificação que define todas as regras e diretrizes para interação entre um cliente
+e uma API. Ele funciona como um acordo formal entre o provedor da API e os consumidores, garantindo que todos
+saibam exatamente como se comunicar
+
+Definindo um contrato;
+*Identificação do recurso
+*Método/Verbo HTTP apropriado
+*Código de resposta apropriado
+*Definição do payload de request e response
+*Definição dos headers
+
+
