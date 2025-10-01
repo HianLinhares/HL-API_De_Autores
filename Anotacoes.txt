@@ -3,5 +3,29 @@
 O Lombok (ou Project Lombok) é uma biblioteca Java que serve para eliminar código repetitivo e simplificar as classes
  — principalmente aquelas com muitos getters, setters, construtores, equals, hashCode e toString.
 
+//PATH VARIABLE
+
+1. @PathVariable → Captura valores da URL
+Usada quando o dado vem diretamente no caminho (path) da requisição.
+Exemplo de rota: /usuarios/10
+@GetMapping("/usuarios/{id}")
+public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable ("id") Long id) {
+    Usuario usuario = usuarioService.buscarPorId(id);
+    return ResponseEntity.ok(new UsuarioDTO(usuario));
 
 
+//REQUEST BODY
+
+2.@RequestBody → Recebe dados do corpo da requisição (JSON)
+  Usada em métodos POST ou PUT, onde você envia um objeto JSON no corpo (body) da requisição.
+
+{
+  "nome": "Hian",
+  "email": "hian@email.com"
+}
+
+@PostMapping("/usuarios")
+public ResponseEntity<UsuarioDTO> criar(@RequestBody UsuarioRequest dto) {
+    Usuario usuario = usuarioService.salvar(dto.toEntity());
+    return ResponseEntity.ok(new UsuarioDTO(usuario));
+}
