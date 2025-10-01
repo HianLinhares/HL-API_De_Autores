@@ -1,0 +1,7 @@
+//LOMBOK
+
+O Lombok (ou Project Lombok) é uma biblioteca Java que serve para eliminar código repetitivo e simplificar as classes
+ — principalmente aquelas com muitos getters, setters, construtores, equals, hashCode e toString.
+
+
+

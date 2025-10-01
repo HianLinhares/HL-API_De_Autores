@@ -1,0 +1,35 @@
+//CRIAÇÃO DA TABELA AUTOR
+
+create table autor(
+id uuid not null primary key,
+nome varchar(100) not null,
+data_nascimento  date not null,
+nacionalidade varchar(50) not null
+
+);
+
+
+//CRIAÇÃO DA TABELA LIVRO
+
+create table livro(
+id uuid not null primary key,
+isbn varchar(20) not null,
+titulo varchar (150) not null,
+data_publicacao date not null,
+genero varchar(30) not null,
+preco numeric(18,2),
+id_autor uuid not null references autor(id),
+constraint chk_genero check(genero in ('FICCAO', 'FANTASIA', 'MISTERIO', 'ROMANCE', 'BIOGRAFIA'))
+);
+
+// INSERÇÃO NA TABELA LIVRO
+
+insert into livro (id, isbn, titulo, data_publicacao, genero, preco,id_autor)
+values (gen_random_uuid(),222222, 'lalalala', '2021-02-02', 'ROMANCE', 200,'c2cb386c-ad50-437b-a4c1-a70de441366b');
+
+
+//CONSULTA NA TABELA LIVRO ONDE IRÁ SER BUSCADO TODOS OS TÍTULOS QUE TIVEREM 'LALA' NO INICIO OU NO FIM
+
+select *
+from livro
+where titulo like '%la%'

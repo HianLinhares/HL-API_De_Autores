@@ -4,6 +4,9 @@ import Hian.Linhares.HL_API_De_Autores.model.Autor;
 import Hian.Linhares.HL_API_De_Autores.repository.AutorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class AutorService {
 
@@ -16,5 +19,10 @@ public class AutorService {
     public Autor salvar(Autor autor){
         return repository.save(autor);
     }
+
+    public Optional<Autor> obterPorId(UUID id){
+        return repository.findById(id);
+    }
+
 
 }
