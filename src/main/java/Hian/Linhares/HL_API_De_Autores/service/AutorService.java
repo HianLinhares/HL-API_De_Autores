@@ -24,5 +24,9 @@ public class AutorService {
         return repository.findById(id);
     }
 
+    public void excluirPorId(Autor autor){
+        repository.delete(autor);
+    }
+
 
 }
