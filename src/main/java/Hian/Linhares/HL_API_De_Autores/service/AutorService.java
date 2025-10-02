@@ -4,6 +4,7 @@ import Hian.Linhares.HL_API_De_Autores.model.Autor;
 import Hian.Linhares.HL_API_De_Autores.repository.AutorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,6 +27,17 @@ public class AutorService {
 
     public void excluirPorId(Autor autor){
         repository.delete(autor);
+    }
+
+    public List<Autor> pesquisaDeAutor(String nome, String nacionalidade){
+        if (nome!= null && nacionalidade != null){
+            return repository.findByNomeAndNacionalidade(nome,nacionalidade);
+        }if(nome!=null){
+            return repository.findByNome(nome);
+        }if (nacionalidade!=null){
+            return  repository.findByNacionalidade(nacionalidade);
+        }
+        return repository.findAll();
     }
 
 

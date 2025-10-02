@@ -1,0 +1,70 @@
+// MÉTODOS NÃO IMPLEMENTADOS E MESMO ASSIM FUNCIONANDO (QUERY DERIVADA POR CONVENÇÃO DE NOMES)
+
+package Hian.Linhares.HL_API_De_Autores.repository;
+
+import Hian.Linhares.HL_API_De_Autores.model.Autor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface AutorRepository extends JpaRepository<Autor, UUID> {
+
+    List<Autor> findByNome(String nome);
+
+    List<Autor> findByNacionalidade(String nacionalidade);
+
+    List<Autor> findByNomeAndNacionalidade(String nome, String nacionalidade);
+
+}
+
+Esse é um dos maiores poderes do Spring Data JPA: você não precisa implementar manualmente os métodos do Repository!
+O Spring faz isso automaticamente pra você com base na convenção dos nomes dos métodos.
+
+🔹 Resumo:
+
+✅ Você não implementa nada manualmente.
+✅ O Spring gera o SQL automático com base no nome do método.
+✅ Isso é chamado de "query derivada por convenção de nomes".
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// INVERSÃO DE CONTROLE INJEÇÃO DE DEPENDÊNCIA
+
+No Spring, quando você precisa usar outra classe (como o AutorRepository dentro do AutorService), você não cria ela com new, porque quem gerencia a criação e o
+ ciclo de vida dos objetos é o Spring Container.
+Isso é chamado de Inversão de Controle (IoC) e é implementado por meio da Injeção de Dependência (DI).
+
+✅ Tipos de Injeção:
+
+Via construtor ✅ (recomendada)
+
+Via @Autowired no campo
+
+Via @Autowired no setter
+
+💡 Por que usar o construtor (como no seu exemplo)?
+
+Vantagens:
+
+✅ Permite que o Spring injete automaticamente a dependência (AutorRepository) no momento da criação do AutorService.
+
+✅ É mais seguro, porque o campo repository é final (não muda mais depois da construção).
+
+✅ Facilita testes unitários, pois você pode criar a classe manualmente passando um mock no construtor.
+
+✅ Dispensa o uso explícito de @Autowired (Spring detecta automaticamente se há um único construtor).
+
+✅ Evita problemas de injeção nula (null pointer), porque o campo é inicializado no construtor.
+
+🔧 Como o Spring faz:
+
+Quando o Spring sobe o contexto e vê a classe marcada com @Service, ele:
+
+Cria o AutorRepository (porque é um @Repository).
+
+Vê que AutorService tem um construtor que recebe AutorRepository.
+
+Injeta automaticamente a instância correta.
