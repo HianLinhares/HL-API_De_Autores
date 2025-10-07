@@ -1,6 +1,7 @@
 package Hian.Linhares.HL_API_De_Autores.controller;
 
 import Hian.Linhares.HL_API_De_Autores.dto.AutorDTO;
+import Hian.Linhares.HL_API_De_Autores.dto.ErroResposta;
 import Hian.Linhares.HL_API_De_Autores.model.Autor;
 import Hian.Linhares.HL_API_De_Autores.service.AutorService;
 import org.springframework.http.HttpStatus;
