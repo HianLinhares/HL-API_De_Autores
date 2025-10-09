@@ -2,6 +2,7 @@ package Hian.Linhares.HL_API_De_Autores.service;
 
 import Hian.Linhares.HL_API_De_Autores.model.Autor;
 import Hian.Linhares.HL_API_De_Autores.repository.AutorRepository;
+import Hian.Linhares.HL_API_De_Autores.validator.AutorValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.UUID;
 public class AutorService {
 
     private final AutorRepository repository;
+    private final AutorValidator validator;
 
-    public AutorService(AutorRepository repository) {
+    public AutorService(AutorRepository repository, AutorValidator validator) {
         this.repository = repository;
+        this.validator = validator;
     }
 
     public Autor salvar(Autor autor){

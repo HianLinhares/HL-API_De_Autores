@@ -30,7 +30,7 @@ public class Autor {
     private String nome;
 
     @Column(name = "data_nascimento", nullable = false)
-    private LocalDate dataNacimento;
+    private LocalDate dataNascimento;
 
     @Column(name = "nacionalidade", nullable = false, length = 50)
     private String nacionalidade;
@@ -61,7 +61,7 @@ public class Autor {
         return "Autor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", dataNacimento=" + dataNacimento +
+                ", dataNacimento=" + dataNascimento +
                 ", nacionalidade='" + nacionalidade + '\'' +
                 '}';
     }
