@@ -17,7 +17,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http
                 .csrf(AbstractHttpConfigurer::disable) //habilitando o acesso de outras aplicações a essa API
-                .formLogin(configurer-> configurer.loginPage("/login.html")) //criando o próprio formulário de login para autenticação
+                .formLogin(configurer->configurer.loginPage("/login").permitAll()) //criando o próprio formulário de login para autenticação
                 .httpBasic(Customizer.withDefaults()) //habilitando http basic (autenticação através do chrome ou do postman)
                 .authorizeHttpRequests(authorize-> authorize.anyRequest().authenticated()) //definindo que todas requisições a API precisam estar autenticadas
                 .build();
