@@ -1,0 +1,8 @@
+Tipo	    Descrição	                                      Exemplo
+feat	    Nova funcionalidade	                              feat: adicionar endpoint GET /todos
+fix	        Correção de bug	                                  fix: corrigir NullPointer em TodosService
+docs	    Alterações na documentação	                      docs: atualizar README.md
+style	    Formatação/código sem alterar funcionalidade	  style: ajustar identação no TodoController
+refactor	Refatoração sem alterar funcionalidade	          refactor: extrair método para service
+test	    Adição ou alteração de testes	                  test: criar testes unitários para TodoController
+chore	    Tarefas de manutenção do projeto	              chore: atualizar dependências do Maven
