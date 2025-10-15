@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-Anotacoes.txt
-AnotaçõesSobreAPIs.txt
-ComandosSQL.txt
-ComandosSQL2.txt
+HL-anotacoes/Anotacoes.txt
+HL-anotacoes/AnotaçõesSobreAPIs.txt
+HL-anotacoes/ComandoSQLTabelaAutor.txt
+HL-anotacoes/ComandoSQLTabelaLivro.txt
