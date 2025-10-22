@@ -90,6 +90,37 @@ public class AutorController {
 
     }
 
+    @GetMapping("/listartodos")
+    public ResponseEntity<List<Autor>> listarTodos() {
+        List<Autor> usuarios = service.listarTodos();
+        return ResponseEntity.ok(usuarios);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*
       TRATATIVA PARA NÃO PERMITIR A INSERÇÃO DE AUTORES DUPLICADOS

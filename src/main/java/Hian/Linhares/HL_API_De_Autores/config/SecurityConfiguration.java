@@ -2,6 +2,7 @@ package Hian.Linhares.HL_API_De_Autores.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,11 +23,18 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable) //habilitando o acesso de outras aplicações a essa API
-                .formLogin(configurer -> configurer.loginPage("/login").permitAll()) //criando o próprio formulário de login para autenticação
+                .csrf(AbstractHttpConfigurer::disable)  //habilitando o acesso de outras aplicações a essa API
                 .httpBasic(Customizer.withDefaults()) //habilitando http basic (autenticação através do chrome ou do postman)
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated()) //definindo que todas requisições a API precisam estar autenticadas
+                .formLogin(configurer ->{
+                    configurer.loginPage("/login").permitAll(); //criando o próprio formulário de login para autenticação
+                })
+                .authorizeHttpRequests(authorize -> {
+                    authorize.requestMatchers("/autores/**").hasAnyRole("ADMIN","USER"); // adicionando uma role de acesso a essa API
+                    authorize.requestMatchers(HttpMethod.DELETE,"/autores/**").hasRole("ADMIN"); //Sinalizando que apenas a role de admin pode realizar um delete
+                    authorize.anyRequest().authenticated(); //definindo que todas as requisições a API precisam estar autenticadas
+                })
                 .build();
+
     }
 
     //Utilizando usuários em memória para configurações de segurança
@@ -41,9 +49,11 @@ public class SecurityConfiguration {
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         UserDetails user1 = User.builder().username("usuario").password(encoder.encode("123")).roles("USER").build();
-        UserDetails user2 = User.builder().username("usuario2").password(encoder.encode("321")).roles("USER").build();
+        UserDetails user2 = User.builder().username("usuario2").password(encoder.encode("321")).roles("ADMIN").build();
         return new InMemoryUserDetailsManager(user1, user2);
     }
 
 
 }
+
+

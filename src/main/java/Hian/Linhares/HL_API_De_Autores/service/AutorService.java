@@ -50,6 +50,10 @@ public class AutorService {
         return repository.findAll();
     }
 
+    public List<Autor> listarTodos(){
+        return  repository.findAll();
+    }
+
 
 
 
