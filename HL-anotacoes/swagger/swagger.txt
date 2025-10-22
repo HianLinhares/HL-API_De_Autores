@@ -1,0 +1,33 @@
+1) Adicionar a dependência no pom.xml:
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+
+2)Acessos a documentação:
+-http://localhost:8080/swagger-ui/index.html
+
+3)Edição da documentação
+
+3.1)através do link: http://localhost:8080/v3/api-docs é gerado uma JSON que pode ser copiado e importado no
+swagger editor (https://editor.swagger.io/) e a partir disto a edição pode ser feita
+
+3.2)direto no código nos aquivos controllers
+@Tag(name="Autores")
+
+  @Operation(summary = "Salvar autor", description = "cadastrar novo autor")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Cadastro com sucesso."),
+            @ApiResponse(responseCode = "422", description = "Erro de validação"),
+            @ApiResponse(responseCode = "409", description = "Autor já cadastrado")
+    })
+    @PostMapping
+    public ResponseEntity<Void> salvar(@RequestBody AutorDTO autor) {
+        var autorEntidade = autor.mapearParaAutor();
+        service.salvar(autorEntidade);
+        //http://localhost:8080/autores/"f22fd387-54de-4943-bcc7-3776ab571964"
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(autorEntidade.getId()).toUri();
+        return ResponseEntity.created(location).build();
+    }

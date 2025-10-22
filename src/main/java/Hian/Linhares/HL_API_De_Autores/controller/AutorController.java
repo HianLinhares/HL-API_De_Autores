@@ -5,6 +5,10 @@ import Hian.Linhares.HL_API_De_Autores.dto.ErroResposta;
 import Hian.Linhares.HL_API_De_Autores.exceptions.RegistroDuplicados;
 import Hian.Linhares.HL_API_De_Autores.model.Autor;
 import Hian.Linhares.HL_API_De_Autores.service.AutorService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,6 +23,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/autores")
 //http://localhost:8080/autores
+@Tag(name="Autores")
 public class AutorController {
 
     private final AutorService service;
@@ -29,6 +34,12 @@ public class AutorController {
 
 
     //@RequestMapping(method = RequestMethod.POST)
+    @Operation(summary = "Salvar autor", description = "cadastrar novo autor")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Cadastro com sucesso."),
+            @ApiResponse(responseCode = "422", description = "Erro de validação"),
+            @ApiResponse(responseCode = "409", description = "Autor já cadastrado")
+    })
     @PostMapping
     public ResponseEntity<Void> salvar(@RequestBody AutorDTO autor) {
         var autorEntidade = autor.mapearParaAutor();
@@ -38,6 +49,7 @@ public class AutorController {
         return ResponseEntity.created(location).build();
     }
 
+    @Operation(summary = "Buscar autor pelo ID", description = "Busca no banco de dados pelo autor através do fornecimento de API")
     @GetMapping("{id}")
     public ResponseEntity<AutorDTO> obterDetalhes(@PathVariable("id") String id) {
         var idAutor = UUID.fromString(id);
@@ -50,6 +62,7 @@ public class AutorController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Deletar Autores", description = "Exclusão de autores através do fornecimento do ID")
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deletarAutores(@PathVariable("id") String id) {
         var idAutor = UUID.fromString(id);
@@ -61,6 +74,7 @@ public class AutorController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Pesquisa de autores", description = "Pesquisa pelo autor através do fornecimento do nome ou nacionalidade")
     @GetMapping
     public ResponseEntity<List<AutorDTO>> pesquisarAutores(@RequestParam(value = "nome", required = false) String nome,
                                                            @RequestParam(value = "nacionalidade", required = false) String nacionalidade) {
@@ -74,6 +88,7 @@ public class AutorController {
 
     }
 
+    @Operation(summary = "Edição do autor", description = "Edição do autor através do fornecimento do ID")
     @PutMapping("{id}")
     public ResponseEntity<Void> atualizar(@PathVariable("id") String id, @RequestBody AutorDTO dto) {
         var idAutor = UUID.fromString(id);
@@ -90,6 +105,7 @@ public class AutorController {
 
     }
 
+    @Operation(summary = "Listar todos os autores", description = "Listar todos os autores presentes no banco de dados")
     @GetMapping("/listartodos")
     public ResponseEntity<List<Autor>> listarTodos() {
         List<Autor> usuarios = service.listarTodos();
