@@ -1,0 +1,39 @@
+2025-10-22T20:55:14.690-03:00  INFO 11540 --- [HLSpringBoot] [main] H.L.HL_API_De_Autores.Application        : Starting Application using Java 25 with PID 11540 (D:\HL-API_De_Autores\target\classes started by hianf in D:\HL-API_De_Autores)
+2025-10-22T20:55:14.694-03:00  INFO 11540 --- [HLSpringBoot] [main] H.L.HL_API_De_Autores.Application        : No active profile set, falling back to 1 default profile: "default"
+2025-10-22T20:55:15.791-03:00  INFO 11540 --- [HLSpringBoot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-22T20:55:15.842-03:00  INFO 11540 --- [HLSpringBoot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 2 JPA repository interfaces.
+2025-10-22T20:55:16.424-03:00  INFO 11540 --- [HLSpringBoot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-22T20:55:16.436-03:00  INFO 11540 --- [HLSpringBoot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-22T20:55:16.437-03:00  INFO 11540 --- [HLSpringBoot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-10-22T20:55:16.528-03:00  INFO 11540 --- [HLSpringBoot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-22T20:55:16.529-03:00  INFO 11540 --- [HLSpringBoot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1727 ms
+2025-10-22T20:55:16.707-03:00  INFO 11540 --- [HLSpringBoot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-22T20:55:16.754-03:00  INFO 11540 --- [HLSpringBoot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-10-22T20:55:16.785-03:00  INFO 11540 --- [HLSpringBoot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-22T20:55:16.909-03:00  INFO 11540 --- [HLSpringBoot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-22T20:55:17.094-03:00  INFO 11540 --- [HLSpringBoot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d3930fe
+2025-10-22T20:55:17.097-03:00  INFO 11540 --- [HLSpringBoot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-22T20:55:17.146-03:00  WARN 11540 --- [HLSpringBoot] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-22T20:55:17.162-03:00  INFO 11540 --- [HLSpringBoot] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.6
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-22T20:55:17.386-03:00  INFO 11540 --- [HLSpringBoot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-22T20:55:18.408-03:00  INFO 11540 --- [HLSpringBoot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-22T20:55:18.465-03:00  INFO 11540 --- [HLSpringBoot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-22T20:55:18.929-03:00  WARN 11540 --- [HLSpringBoot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-22T20:55:19.292-03:00  INFO 11540 --- [HLSpringBoot] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-10-22T20:55:19.409-03:00  WARN 11540 --- [HLSpringBoot] [main] w.b.WebSecurity$IgnoredRequestConfigurer : One of the patterns in [/vw/api-docs, /v3/api-docs/**, /swagger-resources/**, /swagger-ui.html, swagger-ui/**, /webjars/**] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception.
+2025-10-22T20:55:19.413-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='/vw/api-docs'], Ant [pattern='/vw/api-docs']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.414-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.414-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-resources/**'], Ant [pattern='/swagger-resources/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.414-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.414-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='swagger-ui/**'], Ant [pattern='swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.414-03:00  WARN 11540 --- [HLSpringBoot] [main] o.s.s.c.a.web.builders.WebSecurity       : You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-10-22T20:55:19.432-03:00  INFO 11540 --- [HLSpringBoot] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-10-22T20:55:19.891-03:00  INFO 11540 --- [HLSpringBoot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-22T20:55:19.899-03:00  INFO 11540 --- [HLSpringBoot] [main] H.L.HL_API_De_Autores.Application        : Started Application in 6.066 seconds (process running for 6.591)
