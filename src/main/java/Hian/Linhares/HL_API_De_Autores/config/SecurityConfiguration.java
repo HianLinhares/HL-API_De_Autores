@@ -54,6 +54,12 @@ public class SecurityConfiguration {
         return new InMemoryUserDetailsManager(user1, user2);
     }
 
+         /*
+        para utilizar o CustomUserDetailsService utilizar:
+        parâmetro: (UsuárioService usuarioService)
+        retorno: return new CustomUserDetailsService(usuarioService)
+         */
+
 
 }
 
