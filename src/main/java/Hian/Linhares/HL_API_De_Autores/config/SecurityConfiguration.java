@@ -30,6 +30,7 @@ public class SecurityConfiguration {
                 })
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers("/autores/**").hasAnyRole("ADMIN","USER"); // adicionando uma role de acesso a essa API
+                    authorize.requestMatchers(HttpMethod.POST,"/usuarios/**").permitAll();
                     authorize.requestMatchers(HttpMethod.DELETE,"/autores/**").hasRole("ADMIN"); //Sinalizando que apenas a role de admin pode realizar um delete
                     authorize.anyRequest().authenticated(); //definindo que todas as requisições a API precisam estar autenticadas
                 })
