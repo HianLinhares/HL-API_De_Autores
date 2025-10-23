@@ -13,6 +13,27 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-logging:
-    file:
-      name: app.log
+        #níveis de log (Hierarquicos):
+        #  trace -> Nível mais detalhado de log (logs infinitos)
+        #  debug -> informações de depuração (fluxo e variaveis em execução)
+        #  info -> funcionamento geral da aplicação
+        #  warn -> eventos posivelmente problemáticas
+        #  error -> erros que impedem uma execução específica
+#logging:
+#    file:
+#      name: app.log
+#    level:
+#      root: warn
+#management:
+#  server:
+#    port: 9090
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+
+
+
+
+
+

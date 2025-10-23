@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/autores")
 //http://localhost:8080/autores
 @Tag(name="Autores")
+@Slf4j
 public class AutorController {
 
     private final AutorService service;
@@ -78,6 +80,11 @@ public class AutorController {
     @GetMapping
     public ResponseEntity<List<AutorDTO>> pesquisarAutores(@RequestParam(value = "nome", required = false) String nome,
                                                            @RequestParam(value = "nacionalidade", required = false) String nacionalidade) {
+       log.trace("Pesquisa autores");
+       log.debug("Pesquisa autores");
+       log.info("Pesquisa autores");
+       log.warn("Pesquisa autores");
+       log.error("Pesquisa autores");
         List<Autor> resultado = service.pesquisaDeAutor(nome, nacionalidade);
         List<AutorDTO> lista = resultado.stream().map(autor -> new AutorDTO(
                 autor.getId(),
