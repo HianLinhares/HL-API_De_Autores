@@ -1,10 +1,13 @@
 spring:
   application:
     name: HLSpringBoot
+  profiles:
+    active: production
+# SPRING_PROFILES_ACTIVE=production
   datasource:
-    url: jdbc:postgresql://localhost:5432/library
+    url: ${DATASOURCE_URL}
     username: postgres
-    password: "@123"
+    password: ${DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -19,18 +22,26 @@ spring:
         #  info -> funcionamento geral da aplicação
         #  warn -> eventos posivelmente problemáticas
         #  error -> erros que impedem uma execução específica
-#logging:
-#    file:
-#      name: app.log
-#    level:
-#      root: warn
-#management:
-#  server:
-#    port: 9090
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
+
+
+
+# Configurações de produção
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+  jpa:
+    show-sql: false
+
+# Configurações de homologação
+---
+spring:
+  config:
+    activate:
+      on-profile: homologacao
+  jpa:
+    show-sql: true
 
 
 
